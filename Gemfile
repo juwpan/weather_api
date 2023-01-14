@@ -13,4 +13,10 @@ gem "bootsnap", require: false
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "web-console"
+  gem 'dotenv-rails'
+end
+
+group :development do
+  gem "sidekiq-cron"
+  gem 'sidekiq', '~> 6'
 end
