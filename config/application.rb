@@ -12,6 +12,7 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require 'sidekiq/cron/web'
+require 'rack/throttle'
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
 
@@ -23,6 +24,8 @@ module Weather
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    config.middleware.use Rack::Throttle::Interval, :min => 0.2
 
     # Configuration for the application, engines, and railties goes here.
     #
