@@ -11,6 +11,7 @@ require "action_controller/railtie"
 require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
+require 'sidekiq/cron/web'
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
 
@@ -32,6 +33,7 @@ module Weather
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+    # config.active_job.queue_adapter = :sidekiq
     config.generators.system_tests = nil
   end
 end
