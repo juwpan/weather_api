@@ -8,7 +8,7 @@ class ForecastsController < ApplicationController
   # Почасовая температура за 24 часа
   def historical
     forecast = Forecast.historical.pluck(:temperature, :epoch_time)
-    render json: forecast
+    render json: forecast.map { |temp, data| "Температура: #{temp} (дата: #{data})" }.join("\n")
   end
 
   # Максимальная темперетура за 24 часа
