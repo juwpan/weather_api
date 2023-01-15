@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   
   get "/weather/current", to: "forecasts#current"
   get "/weather/historical", to: "forecasts#historical"
-  get "/weather/max", to: "forecasts#max"
-  get "/weather/min", to: "forecasts#min"
-  get "/weather/avg", to: "forecasts#avg"
+  get "/weather/historical/max", to: "forecasts#max"
+  get "/weather/historical/min", to: "forecasts#min"
+  get "/weather/historical/avg", to: "forecasts#avg"
   get "/weather/by_time", to: "forecasts#by_time"
 end
