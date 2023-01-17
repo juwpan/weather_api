@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   require 'sidekiq/cron/web'
   
+  mount Sidekiq::Web => '/sidekiq'
+
   get :health, to: proc { [200, {}, ["OK"]] }
   
   get "/weather/current", to: "forecasts#current"

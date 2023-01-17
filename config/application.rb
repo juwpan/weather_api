@@ -1,18 +1,19 @@
 require_relative "boot"
 
-require "rails"
+require "rails/all"
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-# require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
-require "action_view/railtie"
-require 'sidekiq/cron/web'
-require 'rack/throttle'
+# require "active_model/railtie"
+# require "active_job/railtie"
+# require "active_record/railtie"
+# require "active_storage/engine"
+# require "action_controller/railtie"
+# # require "action_mailer/railtie"
+# require "action_mailbox/engine"
+# require "action_text/engine"
+# require "action_view/railtie"
+# require 'sidekiq/cron/web'
+# require 'rack/throttle'
+# require 'sidekiq/cron/web'
 # require "action_cable/engine"
 # require "rails/test_unit/railtie"
 
@@ -24,19 +25,18 @@ module Weather
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.middleware.use Rack::Throttle::Interval, :min => 5 if Rails.env.production?
 
-    config.middleware.use Rack::Throttle::Interval, :min => 0.2
-
+    # config.active_job.queue_adapter = :sidekiq
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "Samara"
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
-    # config.active_job.queue_adapter = :sidekiq
     config.generators.system_tests = nil
   end
 end

@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
-gem "rails", "~> 7.0.4"
+gem "rails"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "jbuilder"
@@ -15,6 +15,8 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'factory_bot_rails'
+  gem "sidekiq-cron"
+  gem 'sidekiq', '~> 6.5'
 end
 
 group :test do
@@ -26,6 +28,4 @@ end
 
 group :development do
   gem "web-console"
-  gem "sidekiq-cron"
-  gem 'sidekiq', '~> 6'
 end
