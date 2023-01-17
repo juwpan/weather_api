@@ -16,6 +16,7 @@ RSpec.describe 'Forecasts', type: :request do
       expect(get('/weather/historical')).to eq(200)
       expect(temp.temperature).to eq(17)
       expect(temp_two.temperature).to eq(25)
+      expect(tem_three.temperature).to eq(15)
     end
 
     it 'returns the historical max temperature' do
@@ -49,7 +50,7 @@ RSpec.describe 'Forecasts', type: :request do
     end
 
     context 'when timestamp is found in existing data' do
-      it 'returns the nearest temperature' do
+      it 'returns the nearest time' do
         get('/weather/by_time')
         expect(response).to have_http_status(200)
         near_time = Forecast.by_time(temp_two.epoch_time.to_i)
@@ -64,7 +65,5 @@ RSpec.describe 'Forecasts', type: :request do
         expect{ Forecast.by_time(not_found.epoch_time.to_i) }.to raise_error(ActiveRecord::RecordNotFound, 'No data for this timestamp')
       end
     end
-
-
   end
 end
