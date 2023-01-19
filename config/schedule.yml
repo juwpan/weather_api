@@ -1,5 +1,9 @@
+fill_bd:
+  cron: '*/1 * * * *'
+  class: FillBdJob
+  queue: default
+
 forecast_save_bd:
   cron: '0 */3 * * *'
   class: FetchForecastDataJob
   queue: default
-  
