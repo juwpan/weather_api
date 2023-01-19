@@ -36,17 +36,17 @@
 Перейдите в папку, в которую вы хотите скачать исходный код Ruby on Rails, и запустите:
 
 ```
-$ git clone https://github.com/juwpan/weather_api.git
+git clone https://github.com/juwpan/weather_api.git
 ```
 ```
-$ cd weather_api
+cd weather_api
 ```
 
-### Установка зависимостей
+### Установка зависимостей:
 ```
 bundle install
 ```
-### Запуск миграции
+### Запуск миграции:
 
 ```
 bundle exec rails db:create
@@ -54,19 +54,24 @@ bundle exec rails db:create
 ```
 bundle exec rails db:migrate
 ```
-### Создание ключей
+### Создание ключей:
 
-В корне папки появится файл
+В корне папки создайте файл
 ```
 .env
 ```
-Запишите туда свой API соданный на сайте  (https://developer.accuweather.com/apis.)
+Заполните свой API созданный на сайте  (https://developer.accuweather.com/apis.)
 
 Вид:
 ```
 API_KEY_ACCUWEATHER="your_key"
 ```
-### Запуск приложения
+### Запуск приложения:
+
+```
+bundle exec sidekiq
+```
+### Подождать обновление БД и запустить
 
 ```
 rails s
@@ -78,7 +83,7 @@ rails s
 bundle exec rspec
 ```
 
-### Для смены локации поменяйте значение CITY_LOCAL  на ваше, в файле
+### Для смены локации(региона температуры) поменяйте значение CITY_LOCAL на ваше, в файле
 
 ```
 /app/services/forecast_service.rb
