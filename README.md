@@ -1,24 +1,35 @@
-# README
+# Тестовое задание: API для статистики по погоде
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<div>
+  <a href="https://rubyonrails.org">
+    <img src="https://img.shields.io/badge/Rails-7.0.4-ff0000?logo=RubyonRails&logoColor=white&?style=for-the-badge"
+    alt="Rails badge" />
+  </a>
+  <a href="https://rubyonrails.org">
+    <img src="https://img.shields.io/badge/Ruby-3.1.2-ff0000?logo=Ruby&logoColor=white&?style=for-the-badge"
+    alt="Rails badge" />
+  </a>
+</div>
 
-Things you may want to cover:
+### Источник данных (https://developer.accuweather.com/apis.)
 
-* Ruby version
+- API открыт для всех, авторизация не нужна.
+- Ожидаемая нагрузка на любой эндпоинт: 5 RPS
+- Город любой
 
-* System dependencies
+# Задание.
+### Необходимые эндпоинты:
 
-* Configuration
+* /weather/current - Текущая температура
+* /weather/historical - Почасовая температура за последние 24 часа
+* /weather/historical/max - Максимальная темперетура за 24 часа
+* /weather/historical/min - Минимальная темперетура за 24 часа
+* /weather/historical/avg - Средняя темперетура за 24 часа
+* /weather/by_time - Найти температуру ближайшую к переданному timestamp (например 1621823790 должен отдать температуру за 2021-05-24 08:00. Из имеющихся данных, если такого времени нет вернуть 404)
+* /health - Статус бекенда (Можно всегда отвечать OK)
 
-* Database creation
 
-* Database initialization
+### Важно!
+1. Запуск команд производится в консоли вашей опреционой системы.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Пошаговое руководство запуска приложения.
