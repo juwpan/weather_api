@@ -14,12 +14,14 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'dotenv-rails'
   gem 'rspec-rails', '~> 6.0.0'
-  gem 'factory_bot_rails'
   gem "sidekiq-cron"
   gem 'sidekiq', '~> 6.5'
 end
 
 group :test do
+  gem 'factory_bot_rails'
+  gem 'vcr', '~> 6.1.0'
+  gem "webmock", '3.3.0'
 end
 
 group :production do
