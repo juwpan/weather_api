@@ -12,14 +12,20 @@ RSpec.describe ForecastService do
       end
     end
 
+  # Проверяет является ли переменная эксемпляром класса Array после вызова метода
+  # historical_forecast
     it "returns an array of forecast data" do
       expect(@forecast).to be_an(Array)
     end
 
+  # Проверка сохранилось ли БД данные если сохранился хотя 
+  # бы 1 эксемпляр то тест выдаёт true
     it "saves the forecast data to the database" do
       expect(Forecast.count).to be > 0
     end
-
+  
+  # Проходит по массиву данных записывая тепературу и время 
+  # затем проверяет полученный результат находя в БД соответствующие поля
     it "saves the correct temperature and epoch_time to the database" do
       @forecast.each do |data|
         temp = data['Temperature']['Metric']['Value']
